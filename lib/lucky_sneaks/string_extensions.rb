@@ -15,7 +15,7 @@ module LuckySneaks
     # This is roughly equivalent to ActionView's <tt>textilize_without_paragraph</tt>
     # except that it makes RedCloth do all the work instead of just gsubbing the return
     # from RedCloth.
-    def to_html(lite_mode = false)
+    def stringex_to_html(lite_mode = false)
       if defined?(RedCloth)
         if lite_mode
           RedCloth.new(self, [:lite_mode]).to_html
@@ -27,7 +27,7 @@ module LuckySneaks
           end
         end
       else
-        warn "String#to_html was called without RedCloth being successfully required"
+        warn "String#stringex_to_html was called without RedCloth being successfully required"
         self
       end
     end

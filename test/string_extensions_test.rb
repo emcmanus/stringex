@@ -6,7 +6,7 @@ $: << File.join(File.expand_path(File.dirname(__FILE__)), '../lib')
 require File.join(File.expand_path(File.dirname(__FILE__)), "../init.rb")
 
 class StringExtensionsTest < Test::Unit::TestCase
-  def test_to_html
+  def test_stringex_to_html
     require "rubygems"
     require "RedCloth"
     {
@@ -16,23 +16,23 @@ class StringExtensionsTest < Test::Unit::TestCase
       "I think _this_ is awesome" => "<p>I think <em>this</em> is awesome</p>",
       "Um... _*really*_, man" => "<p>Um&#8230; <em><strong>really</strong></em>, man</p>"
     }.each do |plain, html|
-      assert_equal html, plain.to_html
+      assert_equal html, plain.stringex_to_html
     end
   rescue LoadError
-    puts "\n>> Could not load RedCloth. String#to_html was not tested.\n>> Please gem install RedCloth if you'd like to use this functionality."
+    puts "\n>> Could not load RedCloth. String#stringex_to_html was not tested.\n>> Please gem install RedCloth if you'd like to use this functionality."
   end
 
-  def test_to_html_lite
+  def test_stringex_to_html_lite
     require "rubygems"
     require "RedCloth"
     {
       "I have no pee on me" => "I have no pee on me",
       "But I _do_ get Textile!" => "But I <em>do</em> get Textile!"
     }.each do |plain, html|
-      assert_equal html, plain.to_html(:lite)
+      assert_equal html, plain.stringex_to_html(:lite)
     end
   rescue LoadError
-    puts "\n>> Could not load RedCloth. String#to_html (with :lite argument) was not tested.\n>> Please gem install RedCloth if you'd like to use this functionality."
+    puts "\n>> Could not load RedCloth. String#stringex_to_html (with :lite argument) was not tested.\n>> Please gem install RedCloth if you'd like to use this functionality."
   end
 
   def test_to_url
